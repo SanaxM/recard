@@ -1,0 +1,13 @@
+{% load humanize %}
+
+{% comment %} loop through the boxes {% endcomment %}
+{% for box in boxes %}
+    <a href="{% url 'box' box_num=box.number %}">
+        📤 {{ box.number | ordinal }} Box <mark>{{ box.card_count }}</mark>
+    </a>
+{% endfor %}
+
+{% comment %} 
+using this template, an inclusion tag will be created to list the boxes for navigating 
+this will allow for the tag to return the context info the template needs
+{% endcomment %}

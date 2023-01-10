@@ -1,0 +1,19 @@
+{% extends "recards/base.html" %} {% comment %} extending base html file  {% endcomment %}
+{% load humanize %}  {% comment %} make the content more human-friendly and readable instead of static {% endcomment %}
+
+{% comment %} override the block content in base.html with the cue card rendering {% endcomment %}
+{% block content %}
+    <h2>
+        All Cue Cards
+    </h2>
+    <a href="{% url 'cuecard-create' %}" role="button">
+        📥 Create New Cue Card
+    </a>
+    {% comment %} loop through all cue cards and display on the page {% endcomment %}
+    {% for cuecard in cuecard_list %}
+        {% ifchanged %} {% comment %} only display the box num if it changes. otherwise display all of same box {% endcomment %}
+            <h3 class="boxnum">📤 {{ cuecard.box | ordinal }} Box</h3> {% comment %} pipe the humanizing ordinal filter onto the box num {% endcomment %}
+        {% endifchanged %}
+        {% include "recards/cuecard.html" %}
+    {% endfor %}
+{% endblock content %}

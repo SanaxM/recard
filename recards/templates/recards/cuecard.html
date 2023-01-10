@@ -1,0 +1,19 @@
+<article>
+    <h4>{{ cuecard.concept }}</h4>
+    {% if not check_card %}
+        <p>{{ cuecard.answer }}</p>
+        <hr>
+        {% comment %} cuecard.id is for the primary key passed in the url route {% endcomment %}
+        <a href="{% url 'cuecard-update' cuecard.id %}" role="button">
+            ✍️ Edit Cue Card
+        </a>
+    {% else %}
+        <details>
+            <summary>Reveal Answer</summary>
+            <p>{{ cuecard.answer }}</p>
+        </details>
+        <hr>
+        {% include "recards/cuecard_check_form.html" with solved=True %}
+        {% include "recards/cuecard_check_form.html" with solved=False %}
+    {% endif %}
+ </article>

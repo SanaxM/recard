@@ -1,0 +1,20 @@
+{% extends "recards/base.html" %}
+
+{% comment %} create another template that displays the cue card creation process (blocking the orig content) {% endcomment %}
+
+{% block content %}
+    {% if cuecard %}
+    {% comment %} when there is card data returned, the form will be filled with the data and you can alter as needed. {% endcomment %}
+    <h2>✍️ Edit Cue Card</h2>
+    {% else %}
+    <h2>📥 Create New Cue Card</h2>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %} {% comment %} security pre-req for django forms {% endcomment %}
+        {{ form.as_p }} {% comment %} displays the fields as paragraphs {% endcomment %}
+        <input type="submit" value="Save Cue Card">
+    </form>
+    <a href="{% url 'cuecard-list' %}"> {% comment %} if you don't want to make any more cards, press cancel and it'll lead you back to the list of cue cards {% endcomment %}
+        Cancel
+    </a>
+{% endblock %}
