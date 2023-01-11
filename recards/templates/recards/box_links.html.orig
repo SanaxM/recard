@@ -1,0 +1,39 @@
+{% load humanize %}
+
+<<<<<<< HEAD
+<style>
+    a{
+        border: 1px solid #9BD3DD;
+        background-color: whitesmoke;
+        margin: 4px;
+        text-align: center;
+        text-decoration: none;
+        padding: 4px;
+        color: black;
+    }
+    body{
+        text-align: center;
+    }
+</style>
+
+<body>
+    {% comment %} loop through the boxes {% endcomment %}
+    {% for box in boxes %}
+        <a href="{% url 'box' box_num=box.number %}">
+            📤 {{ box.number | ordinal }} Box - <strong>{{ box.card_count }} Cards</strong>
+        </a>
+    {% endfor %}
+</body>
+=======
+{% comment %} loop through the boxes {% endcomment %}
+{% for box in boxes %}
+    <a href="{% url 'box' box_num=box.number %}">
+        📤 {{ box.number | ordinal }} Box <mark>{{ box.card_count }}</mark>
+    </a>
+{% endfor %}
+
+{% comment %} 
+using this template, an inclusion tag will be created to list the boxes for navigating 
+this will allow for the tag to return the context info the template needs
+{% endcomment %}
+>>>>>>> f71dc3a69e09d370ccf531214b2b2eefca445bce

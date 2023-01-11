@@ -1,0 +1,13 @@
+<form method="post">
+    {% csrf_token %}
+    {% comment %} backend info that is required of the cue card {% endcomment %}
+    <input type="hidden" name="card_id" value="{{card.id}}">
+    {% comment %} checked off based off of the val of solved {% endcomment %}
+    <input type="hidden" name="solved" value="{{solved}}">
+    {% comment %} show two buttons, which the user clicks depending upon their understanding {% endcomment %}
+    {% if solved %}
+        <input type="submit" value="I got it"/>
+    {% else %}
+        <input type="submit" value="Try again later"/>
+    {% endif %}
+</form>
