@@ -1,7 +1,6 @@
 {% load cuecards_tags %}
 
 <nav>
-    <a href="{% url 'cuecard-list' %}">🗂 All Cue Cards</a>
-    {% comment %} load all the boxes as links to their cards {% endcomment %}
+    <a href="{% url 'cuecard-list' %}">🗂 All Cards</a>
     {% boxes_as_links %}
 </nav>

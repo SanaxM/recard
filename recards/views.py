@@ -52,7 +52,7 @@ class BoxView(CueCardListView):
         #check if all the form info is valid or not
         if form.is_valid():
             #either get a cue card from the db or return an error that there is no more cards
-            cuecard = get_object_or_404(CueCard, id=form.cleaned_data["cuecard_id"])
+            cuecard = get_object_or_404(CueCard, id=form.cleaned_data["card_id"])
             #moves the card to the appropriate box dependent upon the button pressed
             cuecard.move(form.cleaned_data["solved"])
             

@@ -2,12 +2,14 @@
 {% load humanize %}
 
 {% block content %}
-    <h2>📤 {{ box_number | ordinal }} Box</h2>
-    {% comment %} two filters: show the # of cards and pluraize Card if there are multiple left in the box {% endcomment %}
-    <mark>{{ object_list | length }}</mark> Cue Card{{ object_list | pluralize }} left in box.
+    <h2 class="ctr">📤 {{ box_number | ordinal }} Box</h2>
+    {% comment %} two filters: show the # of cards and pluraize "Card" if there are multiple left in the box {% endcomment %}
+    <div class="num">
+        <strong>{{ object_list | length }}</strong> Card{{ object_list | pluralize }} left in box.
+    </div>
     <hr/>
     {% comment %} display a card {% endcomment %}
     {% if check_card %}
-        {% include "recards/cuecard.html" with cuecard=check_card%}
+        {% include "recards/cuecard.html" with cuecard=check_card %}
     {% endif %}
 {% endblock content %}
